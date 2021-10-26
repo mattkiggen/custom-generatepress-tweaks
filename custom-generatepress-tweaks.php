@@ -16,12 +16,18 @@ class CustomGeneratePressTweaks {
   }
 
   function onInit() {
-    add_filter('generate_typography_customize_list', [$this, 'addGoogleFont']);
+    add_filter('generate_typography_customize_list', [$this, 'addGoogleFonts']);
   }
 
-  function addGoogleFont( $fonts ) {
+  function addGoogleFonts($fonts) {
     $fonts['dm_sans'] = [
       'name' => 'DM Sans',
+      'variants' => ['400', '700'],
+      'category' => 'sans'
+    ];
+
+    $fonts['inter'] = [
+      'name' => 'Inter',
       'variants' => ['400', '700'],
       'category' => 'sans'
     ];
