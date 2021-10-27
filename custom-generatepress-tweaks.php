@@ -18,15 +18,10 @@ class CustomGeneratePressTweaks {
   function onInit() {
     add_filter('generate_typography_customize_list', [$this, 'addGoogleFonts']);
     add_filter('generate_post_author_output', [$this, 'changeAuthorLink']);
+    add_filter('generate_post_date_output', [$this, 'changeDateOutput']);
   }
 
   function addGoogleFonts($fonts) {
-    $fonts['dm_sans'] = [
-      'name' => 'DM Sans',
-      'variants' => ['400', '700'],
-      'category' => 'sans'
-    ];
-
     $fonts['inter'] = [
       'name' => 'Inter',
       'variants' => ['400', '700'],
@@ -37,6 +32,10 @@ class CustomGeneratePressTweaks {
 
   function changeAuthorLink() {
     return 'by <a href="https://dotmatt.com">Matt</a>';
+  }
+
+  function changeDateOutput($output) {
+    return 'Published on ' . $output;
   }
 }
 
