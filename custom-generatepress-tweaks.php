@@ -17,6 +17,7 @@ class CustomGeneratePressTweaks {
 
   function onInit() {
     add_filter('generate_typography_customize_list', [$this, 'addGoogleFonts']);
+    add_filter('generate_post_author_output', [$this, 'removeAuthorLink']);
   }
 
   function addGoogleFonts($fonts) {
@@ -32,6 +33,10 @@ class CustomGeneratePressTweaks {
       'category' => 'sans'
     ];
     return $fonts;
+  }
+
+  function removeAuthorLink() {
+    return 'by <a href="https://dotmatt.com">Matt</a>';
   }
 }
 
