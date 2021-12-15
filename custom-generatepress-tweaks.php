@@ -3,7 +3,7 @@
 /*
   Plugin Name: Custom GeneratePress Tweaks
   Description: My tweaks for the generatepress theme
-  Version: 1.0.0
+  Version: 1.0.1
   Author: Matt Kiggen
   Author URI: https://github.com/mattkiggen/
 */
@@ -16,18 +16,8 @@ class CustomGeneratePressTweaks {
   }
 
   function onInit() {
-    add_filter('generate_typography_customize_list', [$this, 'addGoogleFonts']);
     add_filter('generate_post_author_output', [$this, 'changeAuthorLink']);
     add_filter('generate_post_date_output', [$this, 'changeDateOutput']);
-  }
-
-  function addGoogleFonts($fonts) {
-    $fonts['inter'] = [
-      'name' => 'Inter',
-      'variants' => ['400', '700'],
-      'category' => 'sans'
-    ];
-    return $fonts;
   }
 
   function changeAuthorLink() {
